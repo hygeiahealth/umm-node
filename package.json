@@ -1,0 +1,23 @@
+{
+  "name": "umm",
+  "version": "1.0.0",
+  "description": "NodeJS implementation of the UMM protocol",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.hygeiahealth.com:gbk/umm-node.git"
+  },
+  "author": "Rob Bullock",
+  "license": "ISC",
+  "dependencies": {
+    "@stomp/stompjs": "5.4.4",
+    "log4js": "^6.1.0",
+    "ws": "7.3.1",
+    "text-encoding": "0.7.0",
+    "axios": "0.19.2",
+    "read-last-lines": "1.7.2"
+  }
+}
