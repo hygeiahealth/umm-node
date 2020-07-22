@@ -249,6 +249,7 @@ async function Init(Options) {
 					if(data.SessionID != Status.SessionID) return;
 
 					logger.info(msg.body);
+					LastCommand = data.Command;
 
 					if(data.Command == 'exit') {
 						SHOULDEXIT = true;
