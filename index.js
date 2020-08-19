@@ -379,6 +379,10 @@ async function Result(result,isError) {
 
 }
 
+function SessionID() {
+	return Status.SessionID;
+}
+
 module.exports = {
 	Init,
 	DW,
@@ -386,5 +390,6 @@ module.exports = {
 	StompSend,
 	SetPage,
 	ShouldExit,
+	SessionID,
 	Result
 };
