@@ -12,6 +12,7 @@ const process = require('process');
 const path = require('path');
 const axios = require('axios');
 const readLastLines = require('read-last-lines');
+var ResultsAPI = null;
 
 Object.assign(global, { WebSocket: require('ws') });
 const TextEncodingPolyfill = require('text-encoding');
@@ -155,6 +156,7 @@ async function Init(Options) {
 	/*
 		Options should be:
 		{
+			brokerURL: // full URL to the RabbitMQ broker
 			connectHeaders: {  // for the RabbitMQ connection
 				login
 				passcode
@@ -165,11 +167,17 @@ async function Init(Options) {
 
 			Log  // optional; if you want a local log
 			Debug  // set to false to disable console logging
+
+			ResultsAPI  // full URL to result API
 		}
 	*/
 
 	if(Options.hasOwnProperty('EFSRoot')) {
 		EFS = Options.EFSRoot;
+	}
+
+	if(Options.hasOwnProperty('ResultsAPI')) {
+		ResultsAPI = Options.ResultsAPI;
 	}
 
 
@@ -228,7 +236,7 @@ async function Init(Options) {
 		logger.debug('creating client');
 
 		CLIENT = new StompJs.Client({
-			brokerURL: 'wss://mq.hygeiahealth.com:15671/ws',
+			brokerURL: Options.brokerURL,
 			connectHeaders: Options.connectHeaders,
 			reconnectDelay: Options.reconnectDelay||500,
 			heartbeatIncoming: Options.heartbeatIncoming||4000,

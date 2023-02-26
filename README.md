@@ -54,10 +54,12 @@ Initializes UMM. `Options` should be an object that looks like this:
 
 ```
 {
+	brokerURL: <string>, // full URL to the RabbitMQ broker
 	connectHeaders: {  // authentication credentials for RabbitMQ
 		login: <string>,
 		passcode: <string>
 	},
+	ResultsAPI: <string>, // full URL to the result API
 	Server: <string>,  // the display name of this server
 	Host: <string>,  // the FQDN of this server
 	User: <string>, // optional, the Brightree username in use
@@ -104,3 +106,4 @@ Ends the UMM session. An `Exit` message is broadcasted and a new record is
 inserted into the  `UMMResult` table. That last action is performed directly
 with the specified DW handle, or via HTTPS if the handle is not set.
 
+Note that this method does *not* exit the NodeJS process.
